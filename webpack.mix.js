@@ -12,4 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix.react('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .version()
+    .disableNotifications();
+
+mix.sass('resources/sass/app.scss', 'public/css');
+
+let productionSourceMaps = false;
+mix.sourceMaps(productionSourceMaps, 'source-map');
+
