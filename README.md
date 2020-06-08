@@ -6,7 +6,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-<p>NOT GOING TO REMOVE THIS LOGO....LOOKS COOL :stuck_out_tongue_closed_eyes: </p>
+<p align="center">NOT GOING TO REMOVE THIS LOGO....LOOKS COOL :stuck_out_tongue_closed_eyes: </p>
 
 ## Background
 
