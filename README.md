@@ -20,8 +20,11 @@ Following are the versions of laravel and react:
 
 - Step 1: Composer Install using command - `sh scripts/composer-install.sh`
 - Step 2: NPM Install using command - `sh scripts/react-reload.sh`
-- Step 3: Start Docker Instances using - `docker-compose up`
-- Step 4: Open this url over browser - `http://localhost`
+- Step 3: Create these env files **(** `{filename}.example` files are present for reference **)**:
+  - Local Database Environment: `./docker-custom/env/.docker-db`
+  - Laravel Environment: `./.env`
+- Step 4: Start Docker Instances using - `docker-compose up`
+- Step 5: Open this url over browser - `http://localhost`
 
 ## License
 

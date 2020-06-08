@@ -5,8 +5,6 @@ services:
     build:
       context: .
       dockerfile: ./docker-custom/Dockerfile
-    env_file:
-      - ./docker-custom/.env-docker
     image: laravel-react-blade.app
     container_name: laravel-react-blade.app
     restart: unless-stopped
@@ -50,12 +48,7 @@ services:
     ports:
       - "3306:3306"
     env_file:
-      - ./docker-custom/.env-docker
-    environment:
-      MYSQL_DATABASE: "${DB_DATABASE}"
-      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
-      SERVICE_TAGS: ${APP_ENV}
-      SERVICE_NAME: "${DB_CONNECTION}"
+      - ./docker-custom/env/.docker-db
     volumes:
       - dbdata:/var/lib/mysql
       - ./docker-custom/config/mysql/my.cnf:/etc/mysql/my.cnf
