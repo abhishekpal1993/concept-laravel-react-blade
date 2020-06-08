@@ -9,6 +9,7 @@ REACT_INSTALL="docker run -it --rm \
   --workdir /app \
   --env DEBUG='*,-babel,-eslint:*,-babel:config:config-chain,-eslint-module-utils:*' \
   mhart/alpine-node:12 \
+  npm ci && \
   npm run prod"
 
 echo "${GREEN}Running ${RED}REACT Reload ${GREEN}:${NC}"
