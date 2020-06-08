@@ -1,5 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
 
 function Example() {
     return (
@@ -8,8 +7,10 @@ function Example() {
                 <div className="col-md-8">
                     <div className="card">
                         <div className="card-header">Example Component</div>
-
-                        <div className="card-body">I'm an example component!</div>
+                        <div className="card-body">
+                            I'm an example component!
+                        </div>
+                        <div class="card-footer text-muted">Well done</div>
                     </div>
                 </div>
             </div>
@@ -18,7 +19,3 @@ function Example() {
 }
 
 export default Example;
-
-if (document.getElementById('app')) {
-    ReactDOM.render(<Example />, document.getElementById('app'));
-}

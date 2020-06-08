@@ -16,10 +16,20 @@ Following are the versions of laravel and react:
 - Laravel: ^7.x
 - React: ^16.13.1
 
-## Project Setup
+## Project Setup - Development
 
 - Step 1: Composer Install using command - `sh scripts/composer-install.sh`
-- Step 2: NPM Install using command - `sh scripts/react-reload.sh`
+- Step 2: Dev-Mode Bundle React using command - `sh scripts/react-watch.sh` || `sh scripts/react-watch-poll.sh`
+- Step 3: Create these env files **(** `{filename}.example` files are present for reference **)**:
+  - Local Database Environment: `./docker-custom/env/.docker-db`
+  - Laravel Environment: `./.env`
+- Step 4: Start Docker Instances using - `docker-compose up`
+- Step 5: Open this url over browser - `http://localhost`
+
+## Project Setup - Release-Candidate
+
+- Step 1: Composer Install using command - `sh scripts/composer-install.sh`
+- Step 2: Bundle React using command - `sh scripts/react-bundle.sh`
 - Step 3: Create these env files **(** `{filename}.example` files are present for reference **)**:
   - Local Database Environment: `./docker-custom/env/.docker-db`
   - Laravel Environment: `./.env`

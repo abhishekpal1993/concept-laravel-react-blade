@@ -13,3 +13,5 @@ yarn-error.log
 test.php
 .bash_history
 .docker-db
+public/css/app.css.map
+public/js/app.js.map
