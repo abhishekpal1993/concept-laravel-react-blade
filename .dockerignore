@@ -1,3 +1,6 @@
 # Folders
 .git
 .vscode
+docker-custom
+.dockerignore
+docker-compose.yml
