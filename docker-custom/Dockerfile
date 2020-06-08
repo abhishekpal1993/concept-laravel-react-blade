@@ -1,5 +1,8 @@
 FROM php:7.3-fpm
 
+# Set working directory
+WORKDIR /var/www
+
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential locales \
@@ -16,36 +19,18 @@ RUN docker-php-ext-install pdo_mysql mysqli mbstring zip exif pcntl
 RUN docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
 RUN docker-php-ext-install gd
 
-# Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
-    composer
-
-# Install Nodejs
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-    apt-get install -y nodejs && \
-    node -v && \
-    npm -v
-
-# Set working directory
-WORKDIR /var/www
+# Change uid and gid of apache to docker user uid/gid
+RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
 # Copy existing application directory contents
 COPY . /var/www
+COPY --chown=www-data:www-data . /var/www
+RUN chown -Rf www-data:www-data /var/www
 
-# Run Project Setup
-RUN npm run prod
-RUN composer install
-RUN chown -R www-data:www-data /var/www
-RUN ls -lrha
-
-# Change current user to www
+# Change current user to www-data and setup cache
 USER www-data
-
-# Final Steps
-RUN php artisan key:generate
-RUN php artisan config:cache
-# !!! RUN php artisan route:cache
-RUN php artisan view:cache
+RUN chmod -Rf 755 /var/www/storage
+RUN sh scripts/regen-key-cache.sh
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000

@@ -8,8 +8,8 @@ DOCKER_COMPOSE_INSTALL="docker run -it --rm \
   -v $(pwd):/app \
   --workdir /app \
   composer:1.10.7 \
-  install"
+  install && \
+  php artisan key:generate"
 
 echo "${GREEN}Running ${RED}Composer Installer ${GREEN}:${NC}"
 eval "$DOCKER_COMPOSE_INSTALL"
-

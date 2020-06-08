@@ -4,3 +4,4 @@
 docker-custom
 .dockerignore
 docker-compose.yml
+.bash_history

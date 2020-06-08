@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: ./docker-custom/Dockerfile
     env_file:
-      - .env
+      - ./docker-custom/.env-docker
     image: laravel-react-blade.app
     container_name: laravel-react-blade.app
     restart: unless-stopped
@@ -22,7 +22,8 @@ services:
       - ./docker-custom/config/php/www.conf:/usr/local/etc/php-fpm.d/www.conf
     networks:
       - laravel-react-blade-network
-
+    depends_on:
+      - db
   #Nginx Service
   webserver:
     image: nginx:alpine
@@ -37,6 +38,8 @@ services:
       - ./docker-custom/config/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
       - laravel-react-blade-network
+    depends_on:
+      - app
 
   #MySQL Service
   db:
@@ -47,7 +50,7 @@ services:
     ports:
       - "3306:3306"
     env_file:
-      - .env
+      - ./docker-custom/.env-docker
     environment:
       MYSQL_DATABASE: "${DB_DATABASE}"
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
