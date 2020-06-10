@@ -9,8 +9,7 @@ REACT_WATCH="docker run -it --rm \
   --workdir /app \
   --env DEBUG='*,-babel,-eslint:*,-babel:config:config-chain,-eslint-module-utils:*' \
   mhart/alpine-node:12 \
-  sh scripts/npm-install.sh && \
-  npm run watch"
+  sh scripts/npm-watch.sh"
 
 echo "${GREEN}Running ${RED}REACT watch ${GREEN}:${NC}"
 eval "$REACT_WATCH"

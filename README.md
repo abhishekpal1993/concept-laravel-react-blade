@@ -1,41 +1,61 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-<p align="center">NOT GOING TO REMOVE THIS LOGO....LOOKS COOL :stuck_out_tongue_closed_eyes: </p>
+# [Laravel](https://laravel.com/) &middot; [React](https://reactjs.org/) &middot; [React-Router](https://reacttraining.com/react-router/)
 
 ## Background
 
-As a Javascript Developer I didn't want to install `PHP` and `Composer` for starting React development on Laravel Framework. So I created various docker scripts to help me out with the project setup like `composer install` and file permission issues. As an add-on, `npm ci && npm run prod` can also be run with a script, for all the PHP developers who don't want to install `npm` but interested in React.
-Following are the versions of laravel and react:
+As a Javascript Developer I didn't want to install `PHP` and `Composer` for React development on Laravel Framework. So I used docker and custom scripts to help me out with the project development like `composer install` and file permission issues. As an add-on, for all those developers who don't want to install `node` development  environment can also use this scaffold by utilizing various custom script discussed below.
+
+Following are the versions of frameworks, libraries and tools used in this project:
 
 - Laravel: ^7.x
 - React: ^16.13.1
+- Composer: 1.10.7
+- Node: ^12.0
+- PHP: 7.3
 
-## Project Setup - Development
+## Running Project
 
-- Step 1: Composer Install using command - `sh scripts/composer-install.sh`
-- Step 2: Dev-Mode Bundle React using command - `sh scripts/react-watch.sh` || `sh scripts/react-watch-poll.sh`
-- Step 3: Create these env files **(** `{filename}.example` files are present for reference **)**:
-  - Local Database Environment: `./docker-custom/env/.docker-db`
-  - Laravel Environment: `./.env`
-- Step 4: Start Docker Instances using - `docker-compose up`
-- Step 5: Open this url over browser - `http://localhost`
+### Step 1: Composer Install
 
-## Project Setup - Release-Candidate
+Assuming we don't have Composer installed on your machine, use this script to install dependency packages:
 
-- Step 1: Composer Install using command - `sh scripts/composer-install.sh`
-- Step 2: Bundle React using command - `sh scripts/react-bundle.sh`
-- Step 3: Create these env files **(** `{filename}.example` files are present for reference **)**:
-  - Local Database Environment: `./docker-custom/env/.docker-db`
-  - Laravel Environment: `./.env`
-- Step 4: Start Docker Instances using - `docker-compose up`
-- Step 5: Open this url over browser - `http://localhost`
+```bash
+sh scripts/composer-install.sh
+```
 
-## License
+### Step 2: React Application
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Assuming we don't have a Node development environment, use following scripts to start react application bundling / node_modules installation:
+
+| NPM | Script |
+|--|--|
+|npm run watch | `sh scripts/react-watch.sh`|
+|npm run watch-poll | `sh scripts/react-watch-poll.sh`|
+|npm run prod | `sh scripts/react-bundle.sh`|
+|npm install | `sh scripts/npmi.sh [package_name] [options: '--save-dev', '--save', '-g']`|
+| | example: `sh scripts/npmi.sh axios -g`|
+
+**Note: If you are working on this application, execute commands for this step in a new terminal.**
+
+### Step 3: env files
+
+There are 2 env files which need to be created for this project:
+
+- Project env file (for laravel):
+`./.env`
+
+- Database env file (for the local docker instance):
+`./docker-custom/env/.docker-db`
+
+**Note: For every env file there is a corresponding `{filename}.example` present in same directory as env file containing sample values.**
+
+### Step 4: Running Docker compose
+
+Simple. Nothing complicated here.
+
+```bash
+docker-compose up
+```
+
+### Step 5: Open browser
+
+Navigate to `http://localhost`
