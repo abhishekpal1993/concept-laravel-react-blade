@@ -24,17 +24,11 @@ sh scripts/composer-install.sh
 
 ### Step 2: React Application
 
-Assuming we don't have a Node development environment, use following scripts to start react application bundling / node_modules installation:
+Assuming we don't have a Node development environment, use this script to bundle react scripts:
 
-| NPM | Script |
-|--|--|
-|npm run watch | `sh scripts/react-watch.sh`|
-|npm run watch-poll | `sh scripts/react-watch-poll.sh`|
-|npm run prod | `sh scripts/react-bundle.sh`|
-|npm install | `sh scripts/npmi.sh [package_name] [options: '--save-dev', '--save', '-g']`|
-| | example: `sh scripts/npmi.sh axios -g`|
-
-**Note: If you are working on this application, execute commands for this step in a new terminal.**
+```bash
+sh scripts/react-bundle.sh
+```
 
 ### Step 3: env files
 
@@ -59,3 +53,32 @@ docker-compose up
 ### Step 5: Open browser
 
 Navigate to `http://localhost`
+
+## Scripts and its Usage
+
+### NPM Scripts
+
+Assuming we don't have a Node development environment, use following scripts to start react application bundling / node_modules installation:
+
+| NPM | Script |
+|--|--|
+|npm run watch | `sh scripts/react-watch.sh`|
+|npm run watch-poll | `sh scripts/react-watch-poll.sh`|
+|npm run prod | `sh scripts/react-bundle.sh`|
+|npm install | `sh scripts/npmi.sh [package_name] [options: '--save-dev', '--save', '-g']`|
+| | example: `sh scripts/npmi.sh axios -g`|
+
+**Note: If you are working on this application, execute commands for this step in a new terminal.**
+
+### Composer and Artisan Scripts
+
+Assuming we don't have Composer or PHP installed on your machine, use following scripts to install dependency packages / run artisan commands:
+
+| NPM | Script |
+|--|--|
+|composer install | `sh scripts/composer-install.sh`|
+|composer require | `sh scripts/composer-require.sh [vendor]/[package]:[version] [options: '--dev']`|
+|php artisan | `sh scripts/php-artisan.sh [artisan_command] [arguments] [options]`|
+| | example: `sh scripts/php-artisan.sh help migrate`|
+
+**Note: If you are working on this application, execute commands for this step in a new terminal.**
