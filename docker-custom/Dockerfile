@@ -25,7 +25,6 @@ RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 # Copy existing application directory contents
 COPY . /var/www
 COPY --chown=www-data:www-data . /var/www
-RUN chown -Rf www-data:www-data /var/www
 
 # Change current user to www-data and setup cache
 USER www-data

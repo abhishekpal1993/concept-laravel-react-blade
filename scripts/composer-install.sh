@@ -10,5 +10,9 @@ DOCKER_COMPOSE_INSTALL="docker run -it --rm \
   composer:1.10.7 \
   install"
 
+CHOWN_VENDOR="sudo chown -Rf $USER:$USER ./vendor"
+
 echo "${GREEN}Running ${RED}Composer Installer ${GREEN}:${NC}"
 eval "$DOCKER_COMPOSE_INSTALL"
+echo "${GREEN}Running ${RED}Chown on vendor folder ${GREEN}:${NC}"
+eval "$CHOWN_VENDOR"
